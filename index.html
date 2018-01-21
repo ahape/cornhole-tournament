@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Cornhole Tournament</title>
+        <link href="https://fonts.googleapis.com/css?family=Raleway" 
+              rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" 
+              rel="stylesheet">
+        <link rel="stylesheet" 
+              href="css/app.css" 
+              type="text/css" />
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/underscore.js"></script>
+        <script type="text/javascript" src="js/knockout.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+    </head>
+    <body>
+        <div class="app-container">
+            <h1 class="header">
+                Office Cornhole Tournament
+                <i class="material-icons">flag</i>
+            </h1>
+            <div class="current-game-info"
+                 data-bind="with: currentGame">
+                <h2 class="header">Game 
+                    <span data-bind="text: gameNumber"></span>
+                    of 
+                    <span data-bind="text: $root.games.length"></span>
+                </h2>
+                <h4 class="header" data-bind="text: gameType"></h4>
+
+                <div class="matchup-overview">
+                    <div class="matchup-overview__player"
+                        data-bind="with: player1">
+                        <h3 class="header">Player 1</h3>
+                        <div class="matchup-overview__player-img">
+                            <img data-bind="attr: { src: img }"
+                                width="150"
+                                height="150" 
+                                />
+                        </div>
+                    </div>
+                    <div class="matchup-overview__player"
+                        data-bind="with: player2">
+                        <h3 class="header">Player 2</h3>
+                        <div class="matchup-overview__player-img">
+                            <img data-bind="attr: { src: img }"
+                                width="150"
+                                height="150" 
+                                />
+                        </div>
+                    </div>
+                </div><!-- /.matchup-overvew -->
+
+                <div class="matchup-details">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td data-bind="with: player1">
+                                    <span data-bind="text: name"></span>
+                                </td>
+                                <td class="row-desc">
+                                    <span>VS</span>
+                                </td>
+                                <td data-bind="with: player2">
+                                    <span data-bind="text: name"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span data-bind="text: player1Odds"></span>
+                                </td>
+                                <td class="row-desc">
+                                    <span>Odds</span>
+                                </td>
+                                <td>
+                                    <span data-bind="text: player2Odds"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-bind="with: player1">
+                                    <span data-bind="text: wins"></span>
+                                </td>
+                                <td class="row-desc">
+                                    <span>Wins</span>
+                                </td>
+                                <td data-bind="with: player2">
+                                    <span data-bind="text: wins"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-bind="with: player1">
+                                    <span data-bind="text: losses"></span>
+                                </td>
+                                <td class="row-desc">
+                                    <span>Losses</span>
+                                </td>
+                                <td data-bind="with: player2">
+                                    <span data-bind="text: losses"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-bind="with: player1">
+                                    <span data-bind="text: Math.round(winPct() * 100) + '%'"></span>
+                                </td>
+                                <td class="row-desc">
+                                    <span>Win Pct.</span>
+                                </td>
+                                <td data-bind="with: player2">
+                                    <span data-bind="text: Math.round(winPct() * 100) + '%'"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input class="text-field" 
+                                        data-bind="textinput: player1Score" />
+                                </td>
+                                <td class="row-desc">
+                                    <span>Score</span>
+                                </td>
+                                <td>
+                                    <input class="text-field"
+                                        data-bind="textinput: player2Score" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div><!-- /.matchup-details -->
+
+                <div class="controls">
+                    <button class="btn" 
+                            data-bind="
+                        click: onPreviousGameClick,
+                        enable: canGoPreviousGame">
+                        Previous Game
+                    </button>
+                    <button class="btn"
+                            data-bind="
+                        click: onNextGameClick,
+                        enable: canGoNextGame">
+                        Next Game
+                    </button>
+                </div>
+
+            </div><!-- /.current-game-info -->
+
+            <div class="games-preview-list">
+                <h2 class="header">Games</h2>
+                <ol data-bind="foreach: games">
+                    <li data-bind="css: { 'current-game-list-item': $index() == $root.currentGameIndex() }">
+                        <span data-bind="
+                            text: previewPlayer1, 
+                            css: { 'is-eliminated': player1Eliminated }"></span>
+                        vs.
+                        <span data-bind="
+                            text: previewPlayer2, 
+                            css: { 'is-eliminated': player2Eliminated }"></span>
+                        <!-- ko if: isFinished  -->
+                            <span>
+                                (<span data-bind="text: player1Score"></span> - 
+                                <span data-bind="text: player2Score"></span>)
+                            </span>        
+                        <!-- /ko -->
+                    </li>
+                </ol>
+            </div>
+
+        </div><!-- /.app-container -->
+    </body>
+</html>
