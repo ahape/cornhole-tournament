@@ -740,17 +740,467 @@ var advancementsByPlayerCountByGameIndexHelper = [
     ]
 ];
 
-var GameTypes = {
+var gameData = ko.observableArray([
+    {
+        scores: [1,0],
+        winner: "Gabe",
+        loser: "Alan",
+    },
+    {
+        scores: [0,3],
+        winner: "Rosy",
+        loser: "Matt",
+    },
+    {
+        scores: [4,1],
+        winner: "Gabe",
+        loser: "Andrew",
+    },
+    {
+        scores: [6,0],
+        winner: "Alan",
+        loser: "Matt",
+    },
+    {
+        scores: [0,3],
+        winner: "Alan",
+        loser: "Andrew",
+    },
+    {
+        scores: [1, 0],
+        winner: "Gabe",
+        loser: "Rosy"
+    },
+    {
+        scores: [10,3],
+        winner: "Alan",
+        loser: "Rosy",
+    },
+    {
+        scores: [7,0],
+        winner: "Alan",
+        loser: "Gabe",
+    },
+    {
+        scores: [6,3],
+        winner: "Alan",
+        loser: "Gabe",
+    },
+
+    {
+        scores: [9,1],
+        winner: "Peter",
+        loser: "Gabe",
+    },
+    {
+        scores: [3,0],
+        winner: "Alan",
+        loser: "Andrew",
+    },
+    {
+        scores: [3,4],
+        winner: "Peter",
+        loser: "Matt",
+    },
+    {
+        scores: [1,3],
+        winner: "Alan",
+        loser: "Jim",
+    },
+    {
+        scores: [4,3],
+        winner: "Andrew",
+        loser: "Matt"
+    },
+    {
+        scores: [1,0],
+        winner: "Jim",
+        loser: "Gabe"
+    },
+    {
+        scores: [6,3],
+        winner: "Andrew",
+        loser: "Jim"
+    },
+    {
+        scores: [7,0],
+        winner: "Peter",
+        loser: "Alan",
+    },
+    {
+        scores: [1,0],
+        winner: "Alan",
+        loser: "Andrew"
+    },
+    {
+        scores: [3,4],
+        winner: "Alan",
+        loser: "Peter",
+    },
+    {
+        scores: [6,9],
+        winner: "Alan",
+        loser: "Peter",
+    },
+
+    {
+        scores: [9,0],
+        winner: "Peter",
+        loser: "Gabe",
+    },
+    {
+        scores: [1,0],
+        winner: "Jim",
+        loser: "Matt",
+    },
+    {
+        scores: [1,3],
+        winner: "Peter",
+        loser: "Andrew",
+    },
+    {
+        scores: [4,0],
+        winner: "Jim",
+        loser: "Alan",
+    },
+    {
+        scores: [2,0],
+        winner: "Andrew",
+        loser: "Matt",
+    },
+    {
+        scores: [2,0],
+        winner: "Gabe",
+        loser: "Alan",
+    },
+    {
+        scores: [6,3],
+        winner: "Andrew",
+        loser: "Gabe",
+    },
+    {
+        scores: [3,0],
+        winner: "Peter",
+        loser: "Jim",
+    },
+    {
+        scores: [1,0],
+        winner: "Andrew",
+        loser: "Jim",
+    },
+    {
+        scores: [6,1],
+        winner: "Peter",
+        loser: "Andrew",
+    },
+
+    {
+        scores: [4,0],
+        winner: "Peter",
+        loser: "Andrew",
+    },
+    {
+        scores: [3,0],
+        winner: "Rosy",
+        loser: "Matt",
+    },
+    {
+        scores: [3,0],
+        winner: "Gabe",
+        loser: "Jim",
+    },
+    {
+        scores: [1,0],
+        winner: "Jim",
+        loser: "Matt",
+    },
+    {
+        scores: [4,3],
+        winner: "Alan",
+        loser: "Peter",
+    },
+    {
+        scores: [3,0],
+        winner: "Rosy",
+        loser: "Gabe",
+    },
+    {
+        scores: [6,3],
+        winner: "Peter",
+        loser: "Jim",
+    },
+    {
+        scores: [6,9],
+        winner: "Rosy",
+        loser: "Andrew",
+    },
+    {
+        scores: [6,3],
+        winner: "Peter",
+        loser: "Rosy",
+    },
+    {
+        scores: [1,0],
+        winner: "Alan",
+        loser: "Gabe",
+    },
+    {
+        scores: [3,0],
+        winner: "Peter",
+        loser: "Gabe",
+    },
+    {
+        scores: [3,0],
+        winner: "Peter",
+        loser: "Alan",
+    },
+    {
+        scores: [3,0],
+        winner: "Alan",
+        loser: "Peter",
+    },
+
+    {
+        scores: [3,0],
+        winner: "Rosy",
+        loser: "Andrew",
+    },
+    {
+        scores: [1,0],
+        winner: "Gabe",
+        loser: "Matt",
+    },
+    {
+        scores: [1,0],
+        winner: "Jim",
+        loser: "Alan",
+    },
+    {
+        scores: [2,0],
+        winner: "Matt",
+        loser: "Alan",
+    },
+    {
+        scores: [3,0],
+        winner: "Peter",
+        loser: "Rosy",
+    },
+    {
+        scores: [3,0],
+        winner: "Jim",
+        loser: "Gabe",
+    },
+    {
+        scores: [3,1],
+        winner: "Matt",
+        loser: "Rosy",
+    },
+    {
+        scores: [4,3],
+        winner: "Gabe",
+        loser: "Andrew",
+    },
+    {
+        scores: [4,3],
+        winner: "Gabe",
+        loser: "Matt",
+    },
+    {
+        scores: [7,3],
+        winner: "Peter",
+        loser: "Jim",
+    },
+    {
+        scores: [4,3],
+        winner: "Gabe",
+        loser: "Jim",
+    },
+    {
+        scores: [3,0],
+        winner: "Peter",
+        loser: "Gabe",
+    },
+
+    {
+        scores: [3,0],
+        winner: "Jim",
+        loser: "Chris",
+    },
+    {
+        scores: [6,0],
+        winner: "Matt",
+        loser: "Rosy",
+    },
+    {
+        scores: [3,0],
+        winner: "Andrew",
+        loser: "Austin",
+    },
+    {
+        scores: [4,3],
+        winner: "Alan",
+        loser: "Gabe",
+    },
+    {
+        scores: [4,0],
+        winner: "Peter",
+        loser: "Jim",
+    },
+    {
+        scores: [1,0],
+        winner: "Gabe",
+        loser: "Chris",
+    },
+    {
+        scores: [1,0],
+        winner: "Rosy",
+        loser: "Jim",
+    },
+    {
+        scores: [3,0],
+        winner: "Austin",
+        loser: "Gabe",
+    },
+    {
+        scores: [6,0],
+        winner: "Alan",
+        loser: "Andrew",
+    },
+    {
+        scores: [1,0],
+        winner: "Peter",
+        loser: "Matt",
+    },
+    {
+        scores: [1,0],
+        winner: "Andrew",
+        loser: "Rosy",
+    },
+    {
+        scores: [3,0],
+        winner: "Matt",
+        loser: "Austin",
+    },
+    {
+        scores: [6,0],
+        winner: "Matt",
+        loser: "Andrew",
+    },
+    {
+        scores: [1,0],
+        winner: "Alan",
+        loser: "Peter",
+    },
+    {
+        scores: [3,0],
+        winner: "Peter",
+        loser: "Matt",
+    },
+    {
+        scores: [6,3],
+        winner: "Alan",
+        loser: "Peter",
+    },
+
+    {
+        scores: [6,3],
+        winner: "Alan",
+        loser: "Gabe",
+    },
+    {
+        scores: [3,0],
+        winner: "Jim",
+        loser: "Austin",
+    },
+    {
+        scores: [3,4],
+        winner: "Chris",
+        loser: "Rosy",
+    },
+    {
+        scores: [3,0],
+        winner: "Peter",
+        loser: "Andrew",
+    },
+    {
+        scores: [2,1],
+        winner: "Matt",
+        loser: "Alan",
+    },
+    {
+        scores: [3,2],
+        winner: "Gabe",
+        loser: "Andrew",
+    },
+    {
+        scores: [3,0],
+        winner: "Austin",
+        loser: "Alan",
+    },
+    {
+        scores: [1,0],
+        winner: "Rosy",
+        loser: "Gabe",
+    },
+    {
+        scores: [6,3],
+        winner: "Peter",
+        loser: "Chris",
+    },
+    {
+        scores: [1,0],
+        winner: "Matt",
+        loser: "Jim",
+    },
+    {
+        scores: [9,0],
+        winner: "Austin",
+        loser: "Chris",
+    },
+    {
+        scores: [6,0],
+        winner: "Rosy",
+        loser: "Jim",
+    },
+    {
+        scores: [3,0],
+        winner: "Rosy",
+        loser: "Austin",
+    },
+    {
+        scores: [3,0],
+        winner: "Peter",
+        loser: "Matt",
+    },
+    {
+        scores: [3,0],
+        winner: "Rosy",
+        loser: "Matt",
+    },
+    {
+        scores: [3,0],
+        winner: "Peter",
+        loser: "Rosy",
+    },
+]);
+
+var GameType = {
     "winnersBracket": "Winners Bracket",
     "losersBracket": "Losers Bracket",
     "bracketChampionship": "Championship",
     "championship": "Grand Final"
 };
 
-var OddsTypes = {
+var OddsType = {
     "underdog": "Underdog",
     "even": "Even",
     "favorite": "Favorite"
+};
+
+var ComplimentaryOdds = {
+    "Underdog": "Favorite",
+    "Favorite": "Underdog",
+    "Even": "Even"
 };
 
 var _imgPaths = [
@@ -765,19 +1215,137 @@ var middlePop = function (arr) {
     return arr.splice(Math.floor(arr.length / 2), 1)[0];
 };
 
+var showRecordAsText = function (recordArr) {
+    return recordArr[0] + " - " + recordArr[1];
+};
+
+var showRecordAsWinPct = function (recordArr) {
+    return ((recordArr[0] / (recordArr[0] + recordArr[1])) || 0) * 100;
+};
+
+var showWinPctAsText = function (winPct) {
+    return Math.round(winPct) + "%"
+};
+
+var getOrderNumberWithSuffix = function (n) {
+    var nstr, onesDigit, tensDigit;
+    nstr = Math.floor(n).toString();
+    onesDigit = parseInt(nstr.charAt(nstr.length - 1), 10);
+    tensDigit = parseInt(nstr.charAt(nstr.length - 2), 10);
+    
+    if (tensDigit === 1) {
+        return nstr + "th";
+    }
+
+    switch (onesDigit) {
+        case 1:
+            return nstr + "st";
+        case 2: 
+            return nstr + "nd";
+        case 3: 
+            return nstr + "rd";
+        default: 
+            return nstr + "th";
+    }
+};
+
 var Player = function(name, wins, losses) {
     var self;
 
     self = this;
     self.name = name;
-    self.wins = ko.observable(wins);
-    self.losses = ko.observable(losses);
+    self.wins = ko.computed(function () {
+        return _(gameData()).where({ winner: name }).length;
+    });
+    self.losses = ko.computed(function () {
+        return _(gameData()).where({ loser: name }).length;
+    });
+    self.last10 = ko.computed(function () {
+        var last10, won, lost;
+        last10 = _(gameData()).filter(function (g) {
+            return g.winner === name || g.loser === name;
+        }).slice(-10);
+        won = _(last10).where({ winner: name });
+        lost = _(last10).difference(won);
+        return [won.length, lost.length];
+    });
+    self.last10WinPct = ko.computed(function () {
+        return ((self.last10()[0] / (self.last10()[0] + self.last10()[1])) || 0) * 100;
+    });
+    self.streak = ko.computed(function () {
+        var games, outcome, streak;
+        games = _(gameData()).filter(function (g) {
+            return g.winner === name || g.loser === name;
+        });
+        streak = 0;
+
+        if(games.length === 0) {
+            return "N/A";
+        }
+
+        if (_.last(games).winner === name) {
+            outcome = "winner";
+        } else {
+            outcome = "loser";
+        }
+
+        while ((games.pop() || {})[outcome] === name) {
+            streak++;
+        }
+
+        if (outcome === "winner") {
+            return "W" + streak;
+        }
+
+        return "L" + streak;
+    });
+    self.trend = ko.computed(function () {
+        var last2;
+        last2 = _(gameData()).filter(function (g) {
+            return g.winner === name || g.loser === name;
+        }).slice(-2);
+
+        if (last2[0] && last2[0].winner === name && 
+            last2[1] && last2[1].winner === name) {
+            return '<i class="material-icons hot-player-icon">arrow_upward</i>';
+        }
+
+        if (last2[0] && last2[0].loser === name && 
+            last2[1] && last2[1].loser === name) {
+            return '<i class="material-icons cold-player-icon">arrow_downward</i>';
+        }
+
+        return "";
+    });
     self.isEliminated = ko.observable(false);
 
     self.img = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/" + imgPaths.pop() + ".png";
 
-    self.winPct = ko.pureComputed(function () {
-        return (self.wins() / (self.wins() + self.losses())) || 0;
+    self.winPct = ko.computed(function () {
+        return ((self.wins() / (self.wins() + self.losses())) || 0) * 100;
+    });
+
+    self.avgPPG = ko.pureComputed(function () {
+        var len;
+        return ((_(gameData())
+            .chain()
+            .filter(function (g) {
+                return g.winner === name || g.loser === name;
+            })
+            .map(function (g) {
+                if (g.winner === name) {
+                    return _.max(g.scores)
+                }
+                return _.min(g.scores)
+            })
+            .tap(function (arr) {
+                len = arr.length;
+            })
+            .reduce(function (p,c) {
+                return p + c;
+            }, 0)
+            .value() / len) || 0)
+            .toFixed(1);
     });
 };
 
@@ -798,28 +1366,8 @@ var Game = function(player1, player2, gameNumber, gameType) {
     self.loserNextGame = null;
     self.loserNextGamePlayerKey = "";
 
-    self.player1Odds = ko.pureComputed(function () {
-        if (self.player1().winPct() > self.player2().winPct()) {
-            return OddsTypes.favorite;
-        }
-
-        if (self.player1().winPct() < self.player2().winPct()) {
-            return OddsTypes.underdog;
-        }
-
-        return OddsTypes.even;
-    });
-
-    self.player2Odds = ko.pureComputed(function () {
-        if (self.player2().winPct() > self.player1().winPct()) {
-            return OddsTypes.favorite;
-        }
-
-        if (self.player2().winPct() < self.player1().winPct()) {
-            return OddsTypes.underdog;
-        }
-
-        return OddsTypes.even;
+    self.hasPlayers = ko.computed(function () {
+        return self.player1() !== null && self.player2() !== null;
     });
 
     createPreviewPlayerComputed = function (playerKey) {
@@ -830,7 +1378,7 @@ var Game = function(player1, player2, gameNumber, gameType) {
                 return self[playerKey]().name;
             }
 
-            if (self.gameType === GameTypes.championship) {
+            if (self.gameType === GameType.championship) {
                 return "TBD";
             }
 
@@ -873,7 +1421,76 @@ var Game = function(player1, player2, gameNumber, gameType) {
     self.player1Eliminated = ko.pureComputed(createPlayerEliminatedComputed("player1"));
     self.player2Eliminated = ko.pureComputed(createPlayerEliminatedComputed("player2"));
 
-    self.canGoNextGame = ko.pureComputed(function () {
+    self.player1RecordVSOpponent = ko.computed(function () {
+        var games, p1Name, p2Name;
+
+        if (self.hasPlayers()) {
+            p1Name = self.player1().name;
+            p2Name = self.player2().name;
+
+            games = _(gameData()).filter(function (g) {
+                return (g.winner === p1Name || g.loser === p1Name) &&
+                    (g.winner === p2Name || g.loser === p2Name);
+            });
+
+            return [
+                _(games).where({ winner: p1Name }).length,
+                _(games).where({ loser: p1Name }).length
+            ];
+        }
+
+        return [0,0];
+    });
+
+    self.player1WinPctVSOpponent = ko.computed(function () {
+        var recordArr;
+        recordArr = self.player1RecordVSOpponent();
+
+        return ((recordArr[0] / (recordArr[0] + recordArr[1])) || 0) * 100;
+    });
+
+    self.player2RecordVSOpponent = ko.computed(function () {
+        return self.player1RecordVSOpponent().slice().reverse();
+    });
+
+    self.player2WinPctVSOpponent = ko.computed(function () {
+        var recordArr;
+        recordArr = self.player2RecordVSOpponent();
+
+        return ((recordArr[0] / (recordArr[0] + recordArr[1])) || 0) * 100;
+    });
+
+    self.player1Odds = ko.computed(function () {
+        if (!self.hasPlayers()) {
+            return OddsType.even;
+        }
+
+        if (self.player1WinPctVSOpponent() === 0 && self.player2WinPctVSOpponent() === 0) {
+            if (self.player1().winPct() > self.player2().winPct()) {
+                return OddsType.favorite;
+            }
+    
+            if (self.player1().winPct() < self.player2().winPct()) {
+                return OddsType.underdog;
+            }
+        } else {
+            if (self.player1WinPctVSOpponent() > self.player2WinPctVSOpponent()) {
+                return OddsType.favorite;
+            }
+    
+            if (self.player1WinPctVSOpponent() < self.player2WinPctVSOpponent()) {
+                return OddsType.underdog;
+            }
+        }
+
+        return OddsType.even;
+    });
+
+    self.player2Odds = ko.computed(function () {
+        return ComplimentaryOdds[self.player1Odds()];
+    });
+
+    self.canGoNextGame = ko.computed(function () {
         var player1Score, player2Score;
 
         player1Score = parseInt(self.player1Score(), 10);
@@ -889,12 +1506,13 @@ var Game = function(player1, player2, gameNumber, gameType) {
     self.canGoPreviousGame = self.gameNumber !== 1;
 };
 
+
 Game.prototype.onPreviousGameClick = function() {
     app.goPreviousGame();
 };
 
 Game.prototype.onNextGameClick = function() {
-    var self, player1Score, player2Score;
+    var self, player1Score, player2Score, gameEntry;
 
     self = this;
     player1Score = parseInt(self.player1Score(), 10);
@@ -905,16 +1523,19 @@ Game.prototype.onNextGameClick = function() {
         return;
     }
 
-    if (player1Score > player2Score) {
-        self.player1().wins(self.player1().wins() + 1);
-        self.player2().losses(self.player2().losses() + 1);
+    gameEntry = {};
+    gameEntry.scores = [player1Score, player2Score];
 
-        if (self.gameType !== GameTypes.winnersBracket) {
+    if (player1Score > player2Score) {
+        gameEntry.winner = self.player1().name;
+        gameEntry.loser = self.player2().name;    
+
+        if (self.gameType !== GameType.winnersBracket) {
             self.player2().isEliminated(true);
         }
 
-        if (self.gameType === GameTypes.bracketChampionship ||
-            self.gameType === GameTypes.championship) {
+        if (self.gameType === GameType.bracketChampionship ||
+            self.gameType === GameType.championship) {
             app.gameOver();
         } else {
             self.winnerNextGame[self.winnerNextGamePlayerKey](self.player1());
@@ -926,15 +1547,15 @@ Game.prototype.onNextGameClick = function() {
             app.goNextGame();
         }
     } else {
-        self.player1().losses(self.player1().losses() + 1);
-        self.player2().wins(self.player2().wins() + 1);
+        gameEntry.winner = self.player2().name;
+        gameEntry.loser = self.player1().name; 
 
-        if (self.gameType === GameTypes.losersBracket ||
-            self.gameType === GameTypes.championship) {
+        if (self.gameType === GameType.losersBracket ||
+            self.gameType === GameType.championship) {
             self.player1().isEliminated(true);
         }
 
-        if (self.gameType === GameTypes.championship) {
+        if (self.gameType === GameType.championship) {
             app.gameOver();
         } else {
             if (self.winnerNextGamePlayerKey) {
@@ -949,14 +1570,9 @@ Game.prototype.onNextGameClick = function() {
         }
     }
 
-    self.isFinished(true);
+    gameData.push(gameEntry);
 
-    app.log(
-        self.gameNumber, 
-        self.player1().name, 
-        player1Score, 
-        self.player2().name, 
-        player2Score);
+    self.isFinished(true);
 };
 
 
@@ -984,6 +1600,17 @@ var App = function() {
         })
         .shuffle()
         .value();
+    self.playersByRank = ko.computed(function () {
+        return _(self.players).sortBy(function (p) {
+            // Need 10 games to qualify.
+            return -p.winPct() + -((p.wins.peek() + p.losses.peek()) >= 10 ? 101 : 0);
+        });
+    });
+    self.playersByL10Rank = ko.computed(function () {
+        return _(self.playersByRank.peek()).sortBy(function (p) {
+            return -p.last10WinPct() + -((p.last10.peek()[0] + p.last10.peek()[1]) === 10 ? 101 : 0);
+        });
+    });
     self.games = [];
 
     self.setupGames();
@@ -991,6 +1618,20 @@ var App = function() {
     self.currentGame = ko.computed(function() {
         return self.games[self.currentGameIndex()];
     });
+};
+
+App.prototype.showRankAsText = function (player) {
+    var self, rank;
+    self = this;
+    rank = _(self.playersByRank()).indexOf(player) + 1 
+    return getOrderNumberWithSuffix(rank);
+};
+
+App.prototype.showL10RankAsText = function (player) {
+    var self, rank;
+    self = this;
+    rank = _(self.playersByL10Rank()).indexOf(player) + 1;
+    return getOrderNumberWithSuffix(rank);
 };
 
 App.prototype.setupGames = function() {
@@ -1013,10 +1654,10 @@ App.prototype.setupGames = function() {
         case 12:
         case 13:
             gameTypeByGameIndex = _.map(gameTypeByPlayerCountHelper[playerCount].split(""), function (gt) {
-                return gt === "W" ? GameTypes.winnersBracket :
-                    gt === "L" ? GameTypes.losersBracket :
-                    gt === "B" ? GameTypes.bracketChampionship :
-                    GameTypes.championship;
+                return gt === "W" ? GameType.winnersBracket :
+                    gt === "L" ? GameType.losersBracket :
+                    gt === "B" ? GameType.bracketChampionship :
+                    GameType.championship;
             });
 
             pspHelperCopy = playerStartPositionsByPlayerCountHelper[playerCount].slice();
@@ -1054,7 +1695,7 @@ App.prototype.setupGames = function() {
                 var advancement, wng, lng;
                 advancement = advancementsByGameIndex[i] || {}; 
 
-                if (game.gameType === GameTypes.bracketChampionship) {
+                if (game.gameType === GameType.bracketChampionship) {
                     advancement.winner = {
                         gameIndex: i + 1,
                         playerKey: "player1"
@@ -1063,7 +1704,7 @@ App.prototype.setupGames = function() {
                         gameIndex: i + 1,
                         playerKey: "player2"
                     }
-                } else if (game.gameType === GameTypes.championship) {
+                } else if (game.gameType === GameType.championship) {
                     return;
                 }
 
@@ -1085,15 +1726,6 @@ App.prototype.setupGames = function() {
     }
 };
 
-App.prototype.log = function (
-    gameNumber, 
-    player1Name, 
-    player1Score, 
-    player2Name, 
-    player2Score) {
-    return window.console.log.apply(null, _.toArray(arguments));
-};
-
 //  Go to the next game.
 App.prototype.goNextGame = function () {
     var self;
@@ -1113,13 +1745,7 @@ App.prototype.goPreviousGame = function () {
     
     currentGame = self.currentGame();
 
-    if (parseInt(currentGame.player1Score(), 10) > parseInt(currentGame.player2Score(), 10)) {
-        currentGame.player1().wins(currentGame.player1().wins() - 1);
-        currentGame.player2().losses(currentGame.player2().losses() - 1);
-    } else {
-        currentGame.player1().losses(currentGame.player1().losses() - 1);
-        currentGame.player2().wins(currentGame.player2().wins() - 1);
-    }
+    gameData.pop();
 
     if (currentGame.player1().isEliminated()) {
         currentGame.player1().isEliminated(false);
@@ -1146,5 +1772,6 @@ var app = window.debug = new App();
 $(function () {
     ko.applyBindings(app);
 });
+
 
 

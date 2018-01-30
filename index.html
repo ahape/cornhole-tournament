@@ -19,7 +19,6 @@
         <div class="app-container">
             <h1 class="header">
                 Office Cornhole Tournament
-                <i class="material-icons">flag</i>
             </h1>
             <div class="current-game-info"
                  data-bind="with: currentGame">
@@ -33,7 +32,8 @@
                 <div class="matchup-overview">
                     <div class="matchup-overview__player"
                         data-bind="with: player1">
-                        <h3 class="header">Player 1</h3>
+                        <h3 class="header"
+                            data-bind="text: name"></h3>
                         <div class="matchup-overview__player-img">
                             <img data-bind="attr: { src: img }"
                                 width="150"
@@ -43,7 +43,8 @@
                     </div>
                     <div class="matchup-overview__player"
                         data-bind="with: player2">
-                        <h3 class="header">Player 2</h3>
+                        <h3 class="header"
+                            data-bind="text: name"></h3>
                         <div class="matchup-overview__player-img">
                             <img data-bind="attr: { src: img }"
                                 width="150"
@@ -58,6 +59,7 @@
                         <tbody>
                             <tr>
                                 <td data-bind="with: player1">
+                                    <span data-bind="html: trend"></span>
                                     <span data-bind="text: name"></span>
                                 </td>
                                 <td class="row-desc">
@@ -65,6 +67,7 @@
                                 </td>
                                 <td data-bind="with: player2">
                                     <span data-bind="text: name"></span>
+                                    <span data-bind="html: trend"></span>
                                 </td>
                             </tr>
                             <tr>
@@ -102,13 +105,79 @@
                             </tr>
                             <tr>
                                 <td data-bind="with: player1">
-                                    <span data-bind="text: Math.round(winPct() * 100) + '%'"></span>
+                                    <span data-bind="text: showWinPctAsText(winPct())"></span>
                                 </td>
                                 <td class="row-desc">
                                     <span>Win Pct.</span>
                                 </td>
                                 <td data-bind="with: player2">
-                                    <span data-bind="text: Math.round(winPct() * 100) + '%'"></span>
+                                    <span data-bind="text: showWinPctAsText(winPct())"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-bind="with: player1">
+                                    <span data-bind="text: $root.showRankAsText($data)"></span>
+                                </td>
+                                <td class="row-desc">
+                                    <span>Rank</span>
+                                </td>
+                                <td data-bind="with: player2">
+                                    <span data-bind="text: $root.showRankAsText($data)"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-bind="with: player1">
+                                    <span data-bind="text: avgPPG"></span>
+                                </td>
+                                <td class="row-desc">
+                                    <span>Avg PPG</span>
+                                </td>
+                                <td data-bind="with: player2">
+                                    <span data-bind="text: avgPPG"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-bind="with: player1">
+                                    <span data-bind="text: showRecordAsText(last10())"></span>
+                                </td>
+                                <td class="row-desc">
+                                    <span>Last 10</span>
+                                </td>
+                                <td data-bind="with: player2">
+                                    <span data-bind="text: showRecordAsText(last10())"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-bind="with: player1">
+                                    <span data-bind="text: $root.showL10RankAsText($data)"></span>
+                                </td>
+                                <td class="row-desc">
+                                    <span>L10 Rank</span>
+                                </td>
+                                <td data-bind="with: player2">
+                                    <span data-bind="text: $root.showL10RankAsText($data)"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-bind="with: player1">
+                                    <span data-bind="text: streak"></span>
+                                </td>
+                                <td class="row-desc">
+                                    <span>Streak</span>
+                                </td>
+                                <td data-bind="with: player2">
+                                    <span data-bind="text: streak"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span data-bind="text: showRecordAsText(player1RecordVSOpponent())"></span>
+                                </td>
+                                <td class="row-desc">
+                                    <span>vs. Opp</span>
+                                </td>
+                                <td>
+                                    <span data-bind="text: showRecordAsText(player2RecordVSOpponent())"></span>
                                 </td>
                             </tr>
                             <tr>

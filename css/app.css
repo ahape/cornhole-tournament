@@ -143,7 +143,7 @@ tr:first-child span {
 
 td > span {
     display: inline-block;
-    padding: 5px;
+    padding: 5px 0;
 }
 
 td.row-desc span {
@@ -234,4 +234,16 @@ td:first-child .text-field {
     content: "play_arrow";
     vertical-align: bottom;
     left: -20px;
+}
+
+.hot-player-icon {
+    vertical-align: top;
+    color: green;
+    font-size: 1.25rem;
+}
+
+.cold-player-icon {
+    vertical-align: top;
+    color: red;
+    font-size: 1.25rem;
 }
