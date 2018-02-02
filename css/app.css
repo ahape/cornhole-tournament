@@ -51,16 +51,8 @@ table {
  * app.css begins =============================================================
  */
 
-html {
-    height: 100%;
-}
-
 body {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    padding: 35px 0 90px;
     background: -webkit-linear-gradient(#594109, #ffbc00);
     background: -moz-linear-gradient(#594109, #ffbc00);
     background: -o-linear-gradient(#594109, #ffbc00);
@@ -74,7 +66,7 @@ body {
     border-radius: 6px;
     overflow: hidden;
     width: 900px;
-    margin: 35px auto 90px;
+    margin: 0 auto;
     box-shadow: 0 2px 34px 0 rgba(0,0,0,0.03);
     border: 1px solid black;
 }

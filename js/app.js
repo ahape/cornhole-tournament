@@ -1182,6 +1182,97 @@ var gameData = ko.observableArray([
         winner: "Peter",
         loser: "Rosy",
     },
+
+    {
+        scores: [1,0],
+        winner: "Jim",
+        loser: "Andrea"
+    },
+    {
+        scores: [3,0],
+        winner: "Rosy",
+        loser: "Chris"
+    },
+    {
+        scores: [1,0],
+        winner: "Austin",
+        loser: "Peter"
+    },
+    {
+        scores: [3,1],
+        winner: "Michele",
+        loser: "Andrew"
+    },
+    {
+        scores: [1,6],
+        winner: "Jim",
+        loser: "Gabe"
+    },
+    {
+        scores: [7,0],
+        winner: "Alan",
+        loser: "Rosy"
+    },
+    {
+        scores: [3,0],
+        winner: "Chris",
+        loser: "Peter"
+    },
+    {
+        scores: [3,0],
+        winner: "Andrew",
+        loser: "Andrea"
+    },
+    {
+        scores: [1,4],
+        winner: "Chris",
+        loser: "Gabe"
+    },
+    {
+        scores: [0,4],
+        winner: "Rosy",
+        loser: "Andrew"
+    },
+    {
+        scores: [4,3],
+        winner: "Austin",
+        loser: "Jim"
+    },
+    {
+        scores: [1,0],
+        winner: "Alan",
+        loser: "Michele"
+    },
+    {
+        scores: [3,0],
+        winner: "Jim",
+        loser: "Rosy"
+    },
+    {
+        scores: [1,4],
+        winner: "Michele",
+        loser: "Chris"
+    },
+    {
+        scores: [4,0],
+        winner: "Michele",
+        loser: "Jim"
+    },
+    {
+        scores: [3,0],
+        winner: "Austin",
+        loser: "Alan"
+    },
+    {
+        scores: [6,0],
+        winner: "Michele",
+        loser: "Alan"
+    },
+    {
+        scores: [6,3],
+        winner: "Austin",
+        loser: "Michele"
+    },
 ]);
 
 var GameType = {
@@ -1319,7 +1410,20 @@ var Player = function(name, wins, losses) {
     });
     self.isEliminated = ko.observable(false);
 
-    self.img = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/" + imgPaths.pop() + ".png";
+    switch (name) {
+        case "Gabe":
+            self.img = "https://media.giphy.com/media/k1D9oIz39tqr6/giphy.gif";
+            break;
+        case "Alan":
+            self.img = "https://cdn.dribbble.com/users/130094/screenshots/2368796/burger.gif";
+            break;
+        case "Rosy":
+            self.img = "https://media.giphy.com/media/4YFcrXwpjeMWk/giphy.gif";
+            break;
+        default:
+            self.img = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/" + imgPaths.pop() + ".png";
+            break;
+    }
 
     self.winPct = ko.computed(function () {
         return ((self.wins() / (self.wins() + self.losses())) || 0) * 100;
