@@ -12,7 +12,7 @@
 
 /**
  * An abbreviated list of game types, indexed by player count.
- * @type {Array.<?string>}
+ * @type {Array.<string|null>}
  */
 var gameTypeByPlayerCountHelper = [
     null,
@@ -36,7 +36,7 @@ var gameTypeByPlayerCountHelper = [
 /**
  * A list of lists that indicate how the starting positions should be 
  * distributed. 
- * @type {Array.<Array>}
+ * @type {Array.<number[]|null>}
  */
 var playerStartPositionsByPlayerCountHelper = [
     null,
@@ -59,7 +59,7 @@ var playerStartPositionsByPlayerCountHelper = [
  * A list of lists that contain couplets (or a single item array), indicating
  * the game number and player position a game should send it's players to 
  * after it is over.
- * @type {Array.<Array.<Array>>}
+ * @type {Array.<Array.<string[]>|null>}
  */
 var advancementsByPlayerCountByGameIndexHelper = [
     null,
@@ -740,6 +740,9 @@ var advancementsByPlayerCountByGameIndexHelper = [
     ]
 ];
 
+/**
+ * @type {KnockoutObservableArray<Cornhole.IGame>}
+ */
 var gameData = ko.observableArray([
     {
         scores: [1,0],
@@ -1273,8 +1276,195 @@ var gameData = ko.observableArray([
         winner: "Austin",
         loser: "Michele"
     },
+
+    {
+        scores: [6,0],
+        winner: "Rosy",
+        loser: "Austin"
+    },
+    {
+        scores: [3,1],
+        winner: "Gabe",
+        loser: "Chris"
+    },
+    {
+        scores: [7,0],
+        winner: "Alan",
+        loser: "Jim"
+    },
+    {
+        scores: [1,4],
+        winner: "Jim",
+        loser: "Chris"
+    },
+    {
+        scores: [3,0],
+        winner: "Rosy",
+        loser: "Matt"
+    },
+    {
+        scores: [3,0],
+        winner: "Alan",
+        loser: "Gabe"
+    },
+    {
+        scores: [1,0],
+        winner: "Matt",
+        loser: "Jim"
+    },
+    {
+        scores: [0,3],
+        winner: "Austin",
+        loser: "Gabe"
+    },
+    {
+        scores: [1,0],
+        winner: "Austin",
+        loser: "Matt"
+    },
+    {
+        scores: [6,3],
+        winner: "Alan",
+        loser: "Rosy"
+    },
+    {
+        scores: [1,0],
+        winner: "Rosy",
+        loser: "Austin"
+    },
+    {
+        scores: [3,0],
+        winner: "Rosy",
+        loser: "Alan"
+    },
+    {
+        scores: [10,3],
+        winner: "Alan",
+        loser: "Rosy"
+    },
+
+    {
+        scores: [3,0],
+        winner: "Gabe",
+        loser: "Jim"
+    },
+    {
+        scores: [6,0],
+        winner: "Alan",
+        loser: "Chris"
+    },
+    {
+        scores: [6,0],
+        winner: "Gabe",
+        loser: "Rosy"
+    },
+    {
+        scores: [1,0],
+        winner: "Jim",
+        loser: "Chris"
+    },
+    {
+        scores: [1,0],
+        winner: "Jim",
+        loser: "Rosy"
+    },
+    {
+        scores: [3,2],
+        winner: "Gabe",
+        loser: "Alan"
+    },
+    {
+        scores: [6,0],
+        winner: "Alan",
+        loser: "Jim"
+    },
+    {
+        scores: [3,0],
+        winner: "Gabe",
+        loser: "Alan"
+    },
+
+    
+    {
+        scores: [6,3],
+        winner: "Peter",
+        loser: "Matt"
+    },
+    {
+        scores: [0,3],
+        winner: "Alan",
+        loser: "Rosy"
+    },
+    {
+        scores: [6,0],
+        winner: "Chris",
+        loser: "Andrew"
+    },
+    {
+        scores: [0,6],
+        winner: "Jim",
+        loser: "Gabe"
+    },
+    {
+        scores: [3,0],
+        winner: "Matt",
+        loser: "Rosy"
+    },
+    {
+        scores: [1,0],
+        winner: "Andrew",
+        loser: "Gabe"
+    },
+    {
+        scores: [4,6],
+        winner: "Peter",
+        loser: "Alan"
+    },
+    {
+        scores: [6,0],
+        winner: "Chris",
+        loser: "Jim"
+    },
+    {
+        scores: [3,1],
+        winner: "Alan",
+        loser: "Andrew"
+    },
+    {
+        scores: [1,4],
+        winner: "Matt",
+        loser: "Jim"
+    },
+    {
+        scores: [1,0],
+        winner: "Alan",
+        loser: "Matt"
+    },
+    {
+        scores: [1,0],
+        winner: "Peter",
+        loser: "Chris"
+    },
+    {
+        scores: [4,1],
+        winner: "Alan",
+        loser: "Chris"
+    },
+    {
+        scores: [1,4],
+        winner: "Alan",
+        loser: "Peter"
+    },
+    {
+        scores: [6,0],
+        winner: "Peter",
+        loser: "Alan"
+    }
 ]);
 
+/**
+ * @enum
+ */
 var GameType = {
     "winnersBracket": "Winners Bracket",
     "losersBracket": "Losers Bracket",
@@ -1282,18 +1472,26 @@ var GameType = {
     "championship": "Grand Final"
 };
 
+/**
+ * @enum
+ */
 var OddsType = {
     "underdog": "Underdog",
     "even": "Even",
     "favorite": "Favorite"
 };
 
+/** @enum */
 var ComplimentaryOdds = {
     "Underdog": "Favorite",
     "Favorite": "Underdog",
     "Even": "Even"
 };
 
+/**
+ * IMG file name, to be referenced like www.pokemon-images.com/{this}.png 
+ * @type {string[]} 
+ * */
 var _imgPaths = [
     "001", "004", "007", "010", "023",
     "025", "054", "068", "074", "077",
@@ -1302,27 +1500,46 @@ var _imgPaths = [
 
 var imgPaths = _.shuffle(_imgPaths);
 
+/**
+ * @param {Array<T>} arr
+ * @returns {T}
+ */
 var middlePop = function (arr) {
     return arr.splice(Math.floor(arr.length / 2), 1)[0];
 };
 
+/**
+ * @param {Array<number>} recordArr 
+ * @returns {string}
+ */
 var showRecordAsText = function (recordArr) {
     return recordArr[0] + " - " + recordArr[1];
 };
 
+/**
+ * @param {Array<number>} recordArr 
+ * @returns {number} win pct
+ */
 var showRecordAsWinPct = function (recordArr) {
     return ((recordArr[0] / (recordArr[0] + recordArr[1])) || 0) * 100;
 };
 
+/**
+ * @param {number} winPct 
+ * @returns {string}
+ */
 var showWinPctAsText = function (winPct) {
     return Math.round(winPct) + "%"
 };
 
+/**
+ * @param {number} n 1, 2, 3, etc
+ * @returns {string} "1st", "2nd", "3rd", etc.
+ */
 var getOrderNumberWithSuffix = function (n) {
-    var nstr, onesDigit, tensDigit;
-    nstr = Math.floor(n).toString();
-    onesDigit = parseInt(nstr.charAt(nstr.length - 1), 10);
-    tensDigit = parseInt(nstr.charAt(nstr.length - 2), 10);
+    var nstr = Math.floor(n).toString();
+    var onesDigit = parseInt(nstr.charAt(nstr.length - 1), 10);
+    var tensDigit = parseInt(nstr.charAt(nstr.length - 2), 10);
     
     if (tensDigit === 1) {
         return nstr + "th";
@@ -1340,10 +1557,17 @@ var getOrderNumberWithSuffix = function (n) {
     }
 };
 
-var Player = function(name, wins, losses) {
-    var self;
-
-    self = this;
+/**
+ * @class Player
+ * @extends Cornhole.IPlayer
+ * @param {*} name 
+ * @param {*} wins 
+ * @param {*} losses 
+ */
+function Player(name, wins, losses) {
+    
+    /** @type {Player} */
+    var self = this;
     self.name = name;
     self.wins = ko.computed(function () {
         return _(gameData()).where({ winner: name }).length;
@@ -1417,8 +1641,26 @@ var Player = function(name, wins, losses) {
         case "Alan":
             self.img = "https://cdn.dribbble.com/users/130094/screenshots/2368796/burger.gif";
             break;
+        case "Matt":
+            self.img = "http://a.fod4.com/misc/Bowling%20PBA%20Trip.gif";
+            break;
         case "Rosy":
             self.img = "https://media.giphy.com/media/4YFcrXwpjeMWk/giphy.gif";
+            break;
+        case "Andrew":
+            self.img = "https://www.jta.org/wp-content/uploads/2017/12/rogowsky-copy.png";
+            break;
+        case "Jim":
+            self.img = "https://s3.amazonaws.com/uploads.hipchat.com/526409/3473174/hF3TL5SZvpKeJff/beavis_and_butt_head_holy_cornholio_thumb.png";
+            break;
+        case "Peter":
+            self.img = "https://is3-ssl.mzstatic.com/image/thumb/Purple69/v4/09/ad/9c/09ad9c08-7aff-dad4-f172-c32cca88aff3/pr_source.png/1200x630bb.jpg";
+            break;
+        case "Austin":
+            self.img = "https://images.8tracks.com/cover/i/008/567/153/jesus-9917.jpg?rect=49,0,536,536&q=98&fm=jpg&fit=max";
+            break;
+        case "Chris":
+            self.img = "https://media.giphy.com/media/3rgXBBxs7DVT6rDkju/giphy.gif";
             break;
         default:
             self.img = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/" + imgPaths.pop() + ".png";
@@ -1640,7 +1882,7 @@ Game.prototype.onNextGameClick = function() {
 
         if (self.gameType === GameType.bracketChampionship ||
             self.gameType === GameType.championship) {
-            app.gameOver();
+            app.gameOver(gameEntry.winner);
         } else {
             self.winnerNextGame[self.winnerNextGamePlayerKey](self.player1());
 
@@ -1660,7 +1902,7 @@ Game.prototype.onNextGameClick = function() {
         }
 
         if (self.gameType === GameType.championship) {
-            app.gameOver();
+            app.gameOver(gameEntry.winner);
         } else {
             if (self.winnerNextGamePlayerKey) {
                 self.winnerNextGame[self.winnerNextGamePlayerKey](self.player2());
@@ -1860,8 +2102,28 @@ App.prototype.goPreviousGame = function () {
     }
 };
 
-App.prototype.gameOver = function () {
-    alert("Game Over");
+App.prototype.gameOver = function (winnerName) {
+    $('body').append(function () {
+        return $(
+            '<img class="extra-delight-unicorn edu-1" src="https://www.spreadshirt.com/image-server/v1/mp/designs/13528826,width=178,height=178/dabbing-unicorn.png" />' +
+            '<img class="extra-delight-unicorn edu-2" src="https://www.spreadshirt.com/image-server/v1/mp/designs/13528826,width=178,height=178/dabbing-unicorn.png" />' +
+            '<img class="extra-delight-unicorn edu-3" src="https://www.spreadshirt.com/image-server/v1/mp/designs/13528826,width=178,height=178/dabbing-unicorn.png" />'
+        );
+    });
+
+    $('body').append('<div class="extra-delight-overlay" />');
+    $('body').append('<div class="extra-delight-text">' + winnerName + ' wins!!!</div>');
+
+    $('.extra-delight-unicorn').animate({
+        left: -200
+    }, { 
+        duration: 6000,
+        done: function () {
+            $('body').one('click', function () {
+                $('.extra-delight-overlay, .extra-delight-text, .extra-delight-unicorn').remove();
+            });
+        }
+    });
 };
 
 

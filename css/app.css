@@ -52,6 +52,7 @@ table {
  */
 
 body {
+    position: relative;
     padding: 35px 0 90px;
     background: -webkit-linear-gradient(#594109, #ffbc00);
     background: -moz-linear-gradient(#594109, #ffbc00);
@@ -238,4 +239,44 @@ td:first-child .text-field {
     vertical-align: top;
     color: red;
     font-size: 1.25rem;
+}
+
+.extra-delight-overlay {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+    background-color: pink;
+}
+
+.extra-delight-text {
+    position: absolute;
+    top: calc(50% - 36px);
+    width: 100%;
+    font-size: 72px;
+    text-align: center;
+    color: magenta;
+    font-family: 'Comic Sans MS';
+    text-transform: uppercase;
+}
+
+.extra-delight-unicorn {
+    position: absolute;
+    z-index: 999;
+}
+
+.extra-delight-unicorn.edu-1 {
+    top: calc(50% - 267px);
+    left: calc(100% + 25px);
+}
+
+.extra-delight-unicorn.edu-2 {
+    top: calc(50% - 89px);
+    left: calc(100% + 100px);
+}
+
+.extra-delight-unicorn.edu-3 {
+    top: calc(50% + 89px);
+    left: calc(100% + 175px);
 }
