@@ -1,0 +1,22 @@
+<li class="c-games-list-item">
+    <!-- ko if: isCurrentGame -->
+        <span class="c-games-list-item__current-game-icon">** </span>
+    <!-- /ko -->
+
+    <!-- ko template: {
+        name: 'games-list-item-player-template',
+        data: player1
+    } --><!-- /ko -->
+
+    <span>vs</span>
+    
+    <!-- ko template: {
+        name: 'games-list-item-player-template',
+        data: player2
+    } --><!-- /ko -->
+
+    <!-- ko template: {
+        name: 'games-list-item-score-template',
+        data: score
+    } --><!-- /ko -->
+</li>

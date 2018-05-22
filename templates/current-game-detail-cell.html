@@ -1,0 +1,18 @@
+<td class="c-current-game-detail-cell">
+    <!-- ko if: isPlayer1 && trend -->
+        (<span data-bind="text: trend"></span>)
+    <!-- /ko -->
+
+    <!-- ko if: text -->
+        <span data-bind="text: text"></span>
+    <!-- /ko -->
+
+    <!-- ko if: !isPlayer1 && trend -->
+        (<span data-bind="text: trend"></span>)
+    <!-- /ko -->
+
+    <!-- ko if: value -->
+        <input type="text" 
+            data-bind="textinput: value" />
+    <!-- /ko -->
+</td>
